@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZubrTESTS", "ZubrTESTS\ZubrTESTS.csproj", "{5DB6D1F8-7713-40A0-8222-C177586D3C6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DB6D1F8-7713-40A0-8222-C177586D3C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB6D1F8-7713-40A0-8222-C177586D3C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB6D1F8-7713-40A0-8222-C177586D3C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB6D1F8-7713-40A0-8222-C177586D3C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
