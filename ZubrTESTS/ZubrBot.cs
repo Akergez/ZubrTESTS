@@ -11,7 +11,7 @@ namespace ZubrTESTS
 {
     public static class ZubrBot
     {
-        public static string key = "5083461640:AAF59cmw9Odoqh_0EiBbm6Z8zO2fIqjNnd0";
+        public static string key = "";
         public static TelegramBotClient Bot = new Telegram.Bot.TelegramBotClient(key);
         public static Dictionary<long, BotTerminal> Terminals = new Dictionary<long, BotTerminal>();
 
