@@ -4,7 +4,7 @@ using Telegram.Bot;
 
 namespace ZubrTESTS
 {
-    class Program
+    static class Program
     {
         static async Task Main(string[] args)
         {
