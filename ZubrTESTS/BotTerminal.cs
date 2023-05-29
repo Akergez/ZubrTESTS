@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Telegram.Bot.Types;
 
 namespace ZubrTESTS
@@ -7,12 +8,13 @@ namespace ZubrTESTS
     {
         private Test _test;
         private readonly long _chatId;
-        private readonly string[] _testList = new string[]{"distrotest", "algem"};
+        private readonly string[] _testList = {"distrotest", "algem"};
 
         public BotTerminal(long id)
         {
             _chatId = id;
         }
+
         public void HandleMessage(Message message)
         {
             if (message?.Text == null)
@@ -26,15 +28,15 @@ namespace ZubrTESTS
             switch (message.Text.ToLower())
             {
                 case "/list":
-                    ZubrBot.BotWriteline(_testList,message);
+                    ZubrBot.BotWriteline(_testList, message);
                     break;
                 case "distrotest":
-                    _test = new Test(this);
+                    _test = new Test(ChatWithUser);
                     _test.AddNewQuestion("Choose best linux distro", new[] {"manjaro", "fedora", "arch"}, 1);
                     _test.DoTest("");
                     break;
                 case "algem":
-                    _test = new Test(this);
+                    _test = new Test(ChatWithUser);
                     _test.AddNewQuestion("2+2", new[] {"4", "1", "австралия"}, 0);
                     _test.DoTest("");
                     break;
@@ -50,13 +52,14 @@ namespace ZubrTESTS
             }
         }
 
-        public void ChatWithUser(string toWrite)
+        private void ChatWithUser(string toWrite)
         {
-            ZubrBot.BotWriteline(new []{toWrite},_chatId);
+            ZubrBot.BotWriteline(new[] {toWrite}, _chatId);
         }
-        public void ChatWithUser(string[] toWrite)
+
+        private void ChatWithUser(string[] toWrite)
         {
-            ZubrBot.BotWriteline(toWrite,_chatId);
+            ZubrBot.BotWriteline(toWrite, _chatId);
         }
     }
 }

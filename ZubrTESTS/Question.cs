@@ -5,7 +5,7 @@ namespace ZubrTESTS
 {
     public class Question
     {
-        private string Task { get; set; }
+        private string Task { get; }
         private int IndexOfRightAnswerInAnswerVariants { get; }
         private int UserAnswerIndex { get; set; }
         private string[] AnswerVariants { get; }
@@ -24,11 +24,13 @@ namespace ZubrTESTS
 
         public void AskQuestion()
         {
-            var text = new List<string>();
-            text.Add( ($"Вопрос номер {QuestionNumber+1}:"));
-            text.Add("");
-            text.Add(Task);
-            text.Add("");
+            var text = new List<string>
+            {
+                ($"Вопрос номер {QuestionNumber + 1}:"),
+                "",
+                Task,
+                ""
+            };
             text.AddRange(AnswerVariants.Select((t, i) => $"{i + 1}) {t}"));
             text.Add("");
             _parentTest.SendToTerminal(text.ToArray());

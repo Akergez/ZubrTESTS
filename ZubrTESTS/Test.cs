@@ -1,22 +1,19 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Telegram.Bot.Types;
 
 namespace ZubrTESTS
 {
     public class Test
     {
-        private readonly List<Question> _questions = new List<Question>();
+        private readonly List<Question> _questions = new();
         private int _rightAnswerCount;
         private int _waitingTestIndex;
-        private readonly BotTerminal _parentTerminal;
+        private readonly Action<string[]> _sendString;
         public bool IsTestCompleted;
 
-        public Test(BotTerminal parentTerminal)
+        public Test(Action<string[]> sendString)
         {
-            _parentTerminal = parentTerminal;
+            _sendString = sendString;
         }
         public void AddNewQuestion(string task, string[] answerVariants, int answerIndex)
         {
@@ -47,16 +44,12 @@ namespace ZubrTESTS
 
         private void WriteResult()
         {
-            _parentTerminal.ChatWithUser($"You answered {_rightAnswerCount} of {_questions.Count}");
+            _sendString(new string[]{$"You answered {_rightAnswerCount} of {_questions.Count}"});
         }
 
         public void SendToTerminal(string[] text)
         {
-            _parentTerminal.ChatWithUser(text);
-        }
-        public void SendToTerminal(string text)
-        {
-            _parentTerminal.ChatWithUser(text);
+            _sendString(text);
         }
         public void WaitAnswer(Question waitingQuestion)
         {
